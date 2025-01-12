@@ -1,0 +1,79 @@
+<h2>Vidéos</h2>
+<br>
+<div class="button-container">
+    <button class="btn add-btn" (click)="toggleAddForm()" [routerLink]="['/ajout']">+ Nouveau(lle)</button>
+  <button class="btn delete-btn">
+    <img src="img/delete.png" alt="delete" style="height: 20px;width:20px;">Supprimer
+  </button>
+</div>
+<div class="bordure"></div>
+
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid">
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table mr-1"></i>
+          Gérer les vidéos
+        </div>
+        <form class="form-inline my-2 my-lg-0" (submit)="applyFilter()">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              
+              <th><img src="img/fleche.png" alt="" width="20"></th>
+              <th>Nom</th>
+              <th>Nom Arabe</th>
+              <th>Nom Français</th>
+              <th>Photo</th>
+              <th>Catégorie</th>
+              <th>Sous Catégorie</th>
+              <th>Statut</th>
+              <th>Est meilleur</th>
+              <th>Est nouveau </th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let article of articles">
+              <td>{{ article.id }}</td>
+              <td>{{ article.name }}</td>
+              <td>{{ article.nameAr }}</td>
+              <td>{{ article.nameFr }}</td>
+              <td><img [src]="article.picture" alt="{{ article.name }}" width="100"></td>
+              <td>{{ article.category.name }}</td>
+              <td>{{ article.subCategory.name }}</td>
+              <td>{{ article.status }}</td>
+              <td>
+                <ng-container *ngIf="article.isTop; else notTop">
+                  <img src="img/valide.webp" alt="Top Article" width="20">
+                </ng-container>
+                <ng-template #notTop>
+                    <img src="img/non.png" alt="not top Article" width="20">
+                </ng-template>
+              </td>
+              <td>
+                <ng-container *ngIf="article.isNew; else notNew">
+                  <img src="img/valide.webp" alt="New Article" width="20">
+                </ng-container>
+                <ng-template #notNew>
+                    <img src="img/non.png" alt="Not new Article" width="20">
+                </ng-template>
+              </td>
+              <td><img src="img/edit.png" alt="" width="30">
+                <img src="img/del.png" alt="" width="30">
+                <img src="img/plus.webp" alt="" width="30">
+                <img src="img/adjust.webp" alt="" width="30"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="articles.length === 0">
+          <p>No articles available.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

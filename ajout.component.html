@@ -1,0 +1,206 @@
+<div style="background-color: #353131; height: 200vh;">
+    <br>
+<div class="container">
+  <button class="btn new-article-button" (click)="toggleForm()">Nouveau(lle) Vidéo</button>
+  
+<div *ngIf="displayForm">
+    <h2>A </h2>
+    <br>
+<form (ngSubmit)="onSubmit()" #articleForm="ngForm">
+    <div class="aa">
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" name="name" placeholder="Nom" [(ngModel)]="newArticle.name" required>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="nameAr" name="nameAr" placeholder="Nom Arabe" [(ngModel)]="newArticle.nameAr" >
+  </div>
+</div>
+<br>
+<div class="aa">
+  <div class="form-group">
+    <input type="text" class="form-control" id="nameFr" name="nameFr" placeholder="Nom Français" [(ngModel)]="newArticle.nameFr" >
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="duration" name="duration" placeholder="Durée" [(ngModel)]="newArticle.duration" >
+  </div>
+</div>
+<br>
+<div class="aa">
+  <div class="form-group">
+    <label for="picture">Photo</label>
+    <input type="file" class="form-control" id="picture" name="picture" (change)="handleFileInput($event)" required>
+</div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="watermarkText" name="watermarkText" placeholder="Texte du filigrane" [(ngModel)]="newArticle.watermarkText" >
+  </div>
+</div>
+<br>
+<div class="aa">
+    <div class="bb">
+  <div class="form-group">
+    <label for="file">Fichier</label>
+    <input type="file" class="form-control" id="file" name="file" placeholder="Fichier" [(ngModel)]="newArticle. file" >
+  </div>
+</div>
+</div>
+<br>
+  <div class="aa">
+  <div class="form-group">
+    <input type="number" class="form-control" id="fileSize" name="fileSize" placeholder="Taille de fichier" [(ngModel)]="newArticle.fileSize" >
+  </div>
+</div>
+<br>
+  <div class="aa">
+  <div class="form-group">
+    <input type="text" class="form-control" id="description" name="description" placeholder="Description" [(ngModel)]="newArticle.description" >
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="descriptionAr" name="descriptionAr" placeholder="Description Arabe" [(ngModel)]="newArticle.descriptionAr" >
+  </div>
+</div>
+<br>
+<div class="aa">
+  <div class="form-group">
+    <input type="text" class="form-control" id="descriptionFr" name="descriptionFr" placeholder="Description Français" [(ngModel)]="newArticle.descriptionFr" >
+  </div>
+  <div class="form-check">
+    <br>
+    <input class="form-check-input" type="checkbox" id="enableStreaming" name="enableStreaming" [(ngModel)]="newArticle.enableStreaming" required>
+    <label class="form-check-label" for="enableStreaming">Activer le streaming</label>
+  </div>
+</div>
+<br>
+<div class="aa">
+  <div class="form-group">
+    <input type="number" class="form-control" id="seasonNumber" name="seasonNumber" placeholder="Saison Numéro" [(ngModel)]="newArticle.seasonNumber" >
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="episodeNumber" name="episodeNumber" placeholder="Numéro d'épisode" [(ngModel)]="newArticle.episodeNumber" >
+  </div>
+  
+</div>
+  <br>
+<h2>B</h2>
+<br>
+<div class="pb">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="isTop" name="isTop" [(ngModel)]="newArticle.isTop" required>
+        <label class="form-check-label" for="isTop">Est meilleur</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="isNew" name="isNew" [(ngModel)]="newArticle.isNew" required>
+        <label class="form-check-label" for="isNew">Est nouveau</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="autoPublishing" name="autoPublishing" [(ngModel)]="newArticle.autoPublishing" required>
+        <label class="form-check-label" for="autoPublishing">Publication Auto</label>
+      </div>
+      
+</div>
+<br>
+<div class="pb">
+ <div class="form-group">
+    <label for="startPublishing">Début Publication</label>
+    <input type="datetime-local" class="form-control" id="startPublishing" name="startPublishing" placeholder="Début Publication" [(ngModel)]="newArticle.startPublishing" >
+  </div>
+  <div class="form-group">
+    <label for="endPublishing">Fin Publication</label>
+    <input type="datetime-local" class="form-control" id="endPublishing" name="endPublishing" placeholder="Fin Publication" [(ngModel)]="newArticle.endPublishing" >
+  </div> 
+</div>
+<h2>C</h2>
+<div class="aa">
+    <div class="form-group">
+        <input type="number" class="form-control" id="totalPreviewed" name="totalPreviewed" placeholder="Total des aperçus " [(ngModel)]="newArticle.totalPreviewed" >
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="totalDownloads" name="totalDownloads" placeholder="Nombre de téléchargements " [(ngModel)]="newArticle.totalDownloads" >
+      </div>
+</div>
+<br>
+<div class="aa">
+    <div class="form-group">
+        <input type="number" class="form-control" id="totalHits" name="totalHits" placeholder="Total des hits " [(ngModel)]="newArticle.totalHits" >
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="totalComments" name="totalComments" placeholder="Nombre de commentaires " [(ngModel)]="newArticle.totalComments" >
+      </div>
+
+</div>
+<div class="aa">
+    <div class="form-group">
+        <input type="number" class="form-control" id="totalRatings" name="totalRatings" placeholder=" Total ratings " [(ngModel)]="newArticle.totalRatings" >
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="averageRatings" name="averageRatings" placeholder="Moyennes de votes " [(ngModel)]="newArticle.averageRatings" >
+      </div>
+
+</div>
+<div class="aa">
+    <div class="form-group">
+        <input type="number" class="form-control" id="totalLikes" name="totalLikes" placeholder=" Nombre des j'aime " [(ngModel)]="newArticle.totalLikes" >
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="totalDislikes" name="totalDislikes" placeholder="Nombre des j'aime pas " [(ngModel)]="newArticle.totalDislikes" >
+      </div>
+
+</div>
+<div class="aa">
+    <div class="form-group">
+        <input type="number" class="form-control" id="totalBookmarks" name="totalBookmarks" placeholder=" Total favoris " [(ngModel)]="newArticle.totalBookmarks" >
+      </div> 
+</div>
+
+<h2>D</h2>
+<br>
+<div class="aa">
+      <div class="form-check">
+        <br>
+        <input class="form-check-input" type="checkbox" id="remoteSource" name="remoteSource" [(ngModel)]="newArticle.remoteSource" required>
+        <label class="form-check-label" for="remoteSource">Source à distance </label>
+      </div> 
+
+</div>
+<br>
+<div class="aa">
+    <textarea  id="url" name="url" rows="4" cols="50" placeholder="Url" [(ngModel)]="newArticle.url"></textarea>
+    <textarea  id="alternativeUrl" name="alternativeUrl" rows="4" cols="50" placeholder="Url alternative" [(ngModel)]="newArticle.alternativeUrl"></textarea>
+</div>
+
+<br>
+<div class="aa">
+    <div class="form-group">
+    <input type="text" class="form-control" id="copyright" name="copyright" placeholder="Droits d'auteur" [(ngModel)]="newArticle.copyright" >
+    </div> 
+</div>
+
+<h2>Z</h2>
+<div class="pp">  
+<div class="form-group">
+    <select class="form-control" id="category" name="category" [(ngModel)]="newArticle.category" required>
+        <option value="" disabled selected hidden>Catégorie</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <select class="form-control" id="subCategory" name="subCategory" [(ngModel)]="newArticle.subCategory" >
+        <option value="" disabled selected hidden>Sous-Catégorie</option>
+      <option *ngFor="let subCategory of SubCategories" [value]=" subCategory.id">{{subCategory.name }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <select class="form-control" id="experts" name="experts"  [(ngModel)]="newArticle.experts" >
+        <option value="" disabled selected hidden>Médecins</option>
+      <option *ngFor="let experts of expert" [value]="experts.id">{{ experts.name }}</option>
+    </select>
+  </div>
+  
+</div>
+  <br>
+ <div class="pl">
+  <button  class="btn btn-primary" [routerLink]="['/dashboard']">Retour à la liste des vidéos</button>
+  <button type="submit" class="btn btn-primary">Enregistrer</button>
+</div>
+</form>
+</div>
+

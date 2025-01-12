@@ -1,0 +1,25 @@
+<div style="background-color: #353131; height: 85vh;">
+<div class="ca">
+<div class="login-container" [formGroup]="loginForm">
+    <div class="form-group">
+      <img src="img/im1.png" alt="Logo" />
+      <br><br>
+      <p><span style="font-size: larger;"><strong>Connexion</strong></span></p>
+      <label for="username">Nom d'utilisateur</label>
+      <input type="text" id="username" formControlName="username" class="form-control" />
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Mot de passe </label>
+      <input type="password" id="password" formControlName="password" class="form-control" />
+    </div>
+  
+    <div class="pa">
+      <button type="submit" class="btn btn-primary" (click)="onLogin()">Connexion</button>
+      <a href="#">J'ai oublié mon mot de passe</a>
+    </div>
+  </div>
+  <div class="container"></div>
+</div>
+</div>
+  
